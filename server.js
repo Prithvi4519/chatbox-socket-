@@ -17,11 +17,11 @@ const io=new socket.Server(server)
 
 io.on('connection',(socket)=>{
     socket.on('send name',(username)=>{
-        console.log(username)
+        // console.log(username)
         io.emit('send name',(username))
     })
     socket.on('send message',(chat)=>{
-        console.log(chat)
+        // console.log(chat)
         io.emit('send message',(chat))
     })
 })
@@ -42,5 +42,5 @@ app.get(`/`,(req,res)=>{
 // server  listen method
 
 server.listen(PORT,()=>{
-    console.log(`server is listening at the port http://localhost:${PORT}`)
+    // console.log(`server is listening at the port http://localhost:${PORT}`)
 })
