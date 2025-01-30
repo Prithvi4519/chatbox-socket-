@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    height: 60px;
+    width: 100%;
+    background-color: slategray;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar .nav-container {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.navbar .logo {
+    cursor: pointer;
+    text-decoration: none;
+    color:#fff;
+    font-size: 1.2rem;
+}
+
+.container {
+    padding-top: 5rem;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    gap:10px;
+}
+
+.container .form-block {
+    width: 40%;
+    border: 2px solid slategray;
+    padding: 20px;
+}
+
+.form-block form {
+    display: block;
+}
+
+form .form-group {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.form-group .form-input {
+    width: 100%;
+    padding: 10px;
+}
+
+.form-group .send-btn {
+    padding: 8px 10px;
+    width: 100%;
+    border: 2px solid slateblue;
+    background-color: slateblue;
+    color:#fff;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.send-btn:hover,
+.send-btn:active {
+    border: 2px solid slateblue;
+    background-color: #fff;
+    color:slateblue;
+}
+
+.msg-block {
+    padding: 20px;
+    border: 2px solid slategray;
+    width: 100%;
+    height: 80vh;
+}
+
+.msg-block .title {
+    background-color: slategray;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+}
+
+.msg-block #message{
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media screen and (max-width:768px)  {
+    .container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .container .form-block,
+    .container  .msg-block {
+        width: 90vw;
+        margin: auto;
+    }
+}

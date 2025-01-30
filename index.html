@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a href="/" class="logo">Chat APP</a>
+      </div>
+    </nav>
+
+    <section class="container">
+      <div class="form-block">
+        <form id="chatForm">
+          <div class="form-group">
+            <input
+              type="text"
+              name="user"
+              id="user"
+              placeholder="User name"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              name="msg"
+              class="form-input"
+              id="msg"
+              placeholder="Your Message"
+              cols="40"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <button class="send-btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+      <div class="msg-block">
+        <div class="title">
+          <h3>Message</h3>
+        </div>
+        <div id="message"></div>
+      </div>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let chatFormEl=document.getElementById('chatForm')
+      let userEl=document.getElementById('user')
+      let msgEl=document.getElementById('msg')
+
+      let socket=io()
+
+      chatFormEl.addEventListener('submit',(event)=>{
+        event.preventDefault()
+        console.log(`name=${userEl.value} and message=${msgEl.value}`)
+      
+        if(msgEl.value){
+          socket.emit('send name',userEl.value)
+          socket.emit('send message',msgEl.value)
+          msgEl.value=""
+        }
+      
+      })
+      let msgArea=document.getElementById('message')
+      socket.on('send name',(username)=>{
+        let name=document.createElement('h4')
+        name.textContent=username+ ':';
+        msgArea.appendChild(name)
+
+        
+        })
+        socket.on('send message',(msg)=>{
+          let msgContent=document.createElement('p')
+          msgContent.textContent=msg
+          msgArea.appendChild(msgContent)
+      })
+    </script>
+  </body>
+</html>
